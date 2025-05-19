@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 public class PacMan extends JPanel implements ActionListener, KeyListener {
-    class Block {
+    public class Block {
         int x;
         int y;
         int width;
