@@ -27,7 +27,7 @@ public class Level {
     };
 
     public static final String[] LEVEL_2 = {
-            "XXXXXXXXX XXXXXXXXX",
+            "XXXXXXXXXOXXXXXXXXX",
             "X                 X",
             "X XX XXX X XXX XX X",
             "X                 X",
@@ -47,7 +47,7 @@ public class Level {
             "X    X   X   X    X",
             "X XXXXXX X XXXXXX X",
             "X                 X",
-            "XXXXXXXXX XXXXXXXXX"
+            "XXXXXXXXXOXXXXXXXXX"
     };
 
 
