@@ -58,13 +58,10 @@ public class Level {
      * @return the level layout as a String array
      */
     public static String[] getLevel(int level) {
-        switch (level) {
-            case 1:
-                return LEVEL_1;
-            case 2:
-                return LEVEL_2;
-            default:
-                return LEVEL_1; // Default to level 1 if the level is not recognized
-        }
+        return switch (level) {
+            case 1 -> LEVEL_1;
+            case 2 -> LEVEL_2;
+            default -> LEVEL_1; // Default to level 1 if the level is not recognized
+        };
     }
 }
