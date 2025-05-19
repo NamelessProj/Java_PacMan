@@ -154,18 +154,18 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         this.setFocusable(true);
 
         // Load images
-        WALL_IMAGE = new ImageIcon("src/main/resources/wall.png").getImage();
-        BLUE_GHOST_IMAGE = new ImageIcon("src/main/resources/blueGhost.png").getImage();
-        ORANGE_GHOST_IMAGE = new ImageIcon("src/main/resources/orangeGhost.png").getImage();
-        PINK_GHOST_IMAGE = new ImageIcon("src/main/resources/pinkGhost.png").getImage();
-        RED_GHOST_IMAGE = new ImageIcon("src/main/resources/redGhost.png").getImage();
+        WALL_IMAGE = new ImageIcon(getClass().getResource("wall.png")).getImage();
+        BLUE_GHOST_IMAGE = new ImageIcon(getClass().getResource("blueGhost.png")).getImage();
+        ORANGE_GHOST_IMAGE = new ImageIcon(getClass().getResource("orangeGhost.png")).getImage();
+        PINK_GHOST_IMAGE = new ImageIcon(getClass().getResource("pinkGhost.png")).getImage();
+        RED_GHOST_IMAGE = new ImageIcon(getClass().getResource("redGhost.png")).getImage();
 
-        PACMAN_UP_IMAGE = new ImageIcon("src/main/resources/pacmanUp.png").getImage();
-        PACMAN_DOWN_IMAGE = new ImageIcon("src/main/resources/pacmanDown.png").getImage();
-        PACMAN_LEFT_IMAGE = new ImageIcon("src/main/resources/pacmanLeft.png").getImage();
-        PACMAN_RIGHT_IMAGE = new ImageIcon("src/main/resources/pacmanRight.png").getImage();
+        PACMAN_UP_IMAGE = new ImageIcon(getClass().getResource("pacmanUp.png")).getImage();
+        PACMAN_DOWN_IMAGE = new ImageIcon(getClass().getResource("pacmanDown.png")).getImage();
+        PACMAN_LEFT_IMAGE = new ImageIcon(getClass().getResource("pacmanLeft.png")).getImage();
+        PACMAN_RIGHT_IMAGE = new ImageIcon(getClass().getResource("pacmanRight.png")).getImage();
 
-        CHERRY_IMAGE = new ImageIcon("src/main/resources/cherry.png").getImage();
+        CHERRY_IMAGE = new ImageIcon(getClass().getResource("cherry.png")).getImage();
 
         // Load the map
         loadMap();
