@@ -185,9 +185,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
      * Loads the map from the tileMap array.
      */
     public void loadMap() {
-        walls = new HashSet<Block>();
-        foods = new HashSet<Block>();
-        ghosts = new HashSet<Block>();
+        walls = new HashSet<>();
+        foods = new HashSet<>();
+        ghosts = new HashSet<>();
 
         String[] tileMap = Level.getLevel(level);
 
