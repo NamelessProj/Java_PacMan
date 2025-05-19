@@ -2,7 +2,7 @@ public class Level {
     //X = wall, O = skip, P = pac man, ' ' = food
     //Ghosts: b = blue, o = orange, p = pink, r = red
 
-    public static String[] LEVEL_1 = {
+    public static final String[] LEVEL_1 = {
             "XXXXXXXXXXXXXXXXXXX",
             "X        X        X",
             "X XX XXX X XXX XX X",
@@ -26,7 +26,7 @@ public class Level {
             "XXXXXXXXXXXXXXXXXXX"
     };
 
-    public static String[] LEVEL_2 = {
+    public static final String[] LEVEL_2 = {
             "XXXXXXXXX XXXXXXXXX",
             "X                 X",
             "X XX XXX X XXX XX X",
