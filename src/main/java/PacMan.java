@@ -472,6 +472,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             return;
         }
 
+        // Preventing user to change the direction when the game is paused
+        if (paused)
+            return;
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP -> pacman.updateDirection('U');
             case KeyEvent.VK_DOWN -> pacman.updateDirection('D');
