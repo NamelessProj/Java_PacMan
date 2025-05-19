@@ -469,6 +469,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                 gameLoop.start();
             }
             this.repaint();
+            return;
         }
 
         switch (e.getKeyCode()) {
