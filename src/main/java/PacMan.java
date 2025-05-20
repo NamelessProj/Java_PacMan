@@ -9,6 +9,9 @@ import java.util.Objects;
 import java.util.Random;
 
 public class PacMan extends JPanel implements ActionListener, KeyListener {
+    /**
+     * Block class represents a block in the game, such as walls, ghosts, and Pacman.
+     */
     public class Block {
         int x;
         int y;
@@ -48,6 +51,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
         /**
          * Updates the position in which the block is moving.
+         * @param direction The direction in which the block is moving
          */
         public void updateDirection(char direction) {
             char prevDirection = this.direction;
@@ -91,6 +95,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             }
         }
 
+        /**
+         * Resets the position of the block to its starting position.
+         */
         public void reset() {
             this.x = startX;
             this.y = startY;
@@ -420,6 +427,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                 a.y + a.height > b.y;
     }
 
+    /**
+     * Resets the position of Pacman and the ghosts.
+     */
     public void resetPosition() {
         pacman.reset();
         pacman.velocityX = 0;
