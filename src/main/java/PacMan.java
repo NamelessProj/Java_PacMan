@@ -447,14 +447,14 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (paused)
+        if (paused || gameOver) {
+            gameLoop.stop();
             return;
+        }
 
         frameCount++;
         move();
         this.repaint();
-        if (gameOver)
-            gameLoop.stop();
     }
 
     @Override
@@ -478,7 +478,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         }
 
         // Pausing the game when the space bar is pressed
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE && !gameOver) {
             paused = !paused;
             if (paused) {
                 gameLoop.stop();
