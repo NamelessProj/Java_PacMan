@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Random;
 
 public class PacMan extends JPanel implements ActionListener, KeyListener {
@@ -154,18 +155,18 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         this.setFocusable(true);
 
         // Load images
-        WALL_IMAGE = new ImageIcon(getClass().getResource("wall.png")).getImage();
-        BLUE_GHOST_IMAGE = new ImageIcon(getClass().getResource("blueGhost.png")).getImage();
-        ORANGE_GHOST_IMAGE = new ImageIcon(getClass().getResource("orangeGhost.png")).getImage();
-        PINK_GHOST_IMAGE = new ImageIcon(getClass().getResource("pinkGhost.png")).getImage();
-        RED_GHOST_IMAGE = new ImageIcon(getClass().getResource("redGhost.png")).getImage();
+        WALL_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("wall.png"))).getImage();
+        BLUE_GHOST_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("blueGhost.png"))).getImage();
+        ORANGE_GHOST_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("orangeGhost.png"))).getImage();
+        PINK_GHOST_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("pinkGhost.png"))).getImage();
+        RED_GHOST_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("redGhost.png"))).getImage();
 
-        PACMAN_UP_IMAGE = new ImageIcon(getClass().getResource("pacmanUp.png")).getImage();
-        PACMAN_DOWN_IMAGE = new ImageIcon(getClass().getResource("pacmanDown.png")).getImage();
-        PACMAN_LEFT_IMAGE = new ImageIcon(getClass().getResource("pacmanLeft.png")).getImage();
-        PACMAN_RIGHT_IMAGE = new ImageIcon(getClass().getResource("pacmanRight.png")).getImage();
+        PACMAN_UP_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("pacmanUp.png"))).getImage();
+        PACMAN_DOWN_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("pacmanDown.png"))).getImage();
+        PACMAN_LEFT_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("pacmanLeft.png"))).getImage();
+        PACMAN_RIGHT_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("pacmanRight.png"))).getImage();
 
-        CHERRY_IMAGE = new ImageIcon(getClass().getResource("cherry.png")).getImage();
+        CHERRY_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("cherry.png"))).getImage();
 
         // Load the map
         loadMap();
