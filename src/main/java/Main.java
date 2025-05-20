@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,7 +9,7 @@ public class Main {
         final int BOARD_WIDTH = TILE_SIZE * COLUMN_COUNT;
         final int BOARD_HEIGHT = TILE_SIZE * ROW_COUNT;
 
-        ImageIcon icon = new ImageIcon(Main.class.getResource("pacmanRight.png"));
+        ImageIcon icon = new ImageIcon(Objects.requireNonNull(Main.class.getResource("pacmanRight.png")));
 
         JFrame frame = new JFrame("Pac Man");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
