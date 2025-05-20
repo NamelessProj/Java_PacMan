@@ -287,17 +287,21 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         int scorePosX = TILE_SIZE / 2;
         int scorePosY = (int) (TILE_SIZE / 1.5);
         g.setFont(new Font("Arial", Font.BOLD, 20));
-        if (gameOver) {
-            g.drawString("Game Over: " + score, scorePosX, scorePosY);
-        } else {
-            g.drawString("x" + lives + " Score: " + score, scorePosX, scorePosY);
-        }
+        g.drawString("x" + lives + " Score: " + score, scorePosX, scorePosY);
 
         // Draw level
         g.drawString("Level: " + level, BOARD_WIDTH - 150, scorePosY);
 
-        // Draw pause message
-        if (paused) {
+        if (gameOver) { // Game Over message
+            g.setColor(new Color(0, 0, 0, 150));
+            g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial", Font.BOLD, 50));
+            g.drawString("GAME OVER", BOARD_WIDTH / 2 - 150, BOARD_HEIGHT / 2);
+            g.setFont(new Font("Arial", Font.BOLD, 20));
+            g.drawString("Press R to restart", BOARD_WIDTH / 2 - 120, BOARD_HEIGHT / 2 + 50);
+
+        } else if (paused) { // Draw pause message
             g.setColor(new Color(0, 0, 0, 150));
             g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
             g.setColor(Color.YELLOW);
@@ -449,7 +453,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (gameOver) {
+        if (e.getKeyCode() == KeyEvent.VK_R && gameOver) {
             level = 1;
             loadMap();
             resetPosition();
@@ -458,6 +462,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             gameOver = false;
             frameCount = 0;
             gameLoop.start();
+            return;
         }
 
         // Pausing the game when the space bar is pressed
