@@ -125,6 +125,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     private final Image PACMAN_LEFT_IMAGE;
     private final Image PACMAN_RIGHT_IMAGE;
 
+    private final int GHOST_FRAME_RATE = 50; // Ghosts move every 50 frames
+
     int level = 1;
 
     HashSet<Block> walls;
@@ -361,8 +363,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             ghost.x += ghost.velocityX;
             ghost.y += ghost.velocityY;
 
-            // Make the ghost move in a random direction every 50 frames
-            if (frameCount % 50 == 0) {
+            // Make the ghost move in a random direction every x frames
+            if (frameCount == GHOST_FRAME_RATE) {
+                frameCount = 0;
                 char newDirection = directions[random.nextInt(directions.length)];
                 ghost.updateDirection(newDirection);
             }
