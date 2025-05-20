@@ -300,7 +300,6 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             g.drawString("GAME OVER", BOARD_WIDTH / 2 - 150, BOARD_HEIGHT / 2);
             g.setFont(new Font("Arial", Font.BOLD, 20));
             g.drawString("Press R to restart", BOARD_WIDTH / 2 - 120, BOARD_HEIGHT / 2 + 50);
-
         } else if (paused) { // Draw pause message
             g.setColor(new Color(0, 0, 0, 150));
             g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
