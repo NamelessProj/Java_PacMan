@@ -15,12 +15,12 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     public class Block {
         int x;
         int y;
-        int width;
-        int height;
+        final int width;
+        final int height;
         Image image;
 
-        int startX;
-        int startY;
+        final int startX;
+        final int startY;
 
         private final int VELOCITY;
 
@@ -135,10 +135,12 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     Block pacman;
     Block cherry;
 
-    Timer gameLoop;
     int frameCount = 0;
-    char[] directions = {'U', 'D', 'L', 'R'};
-    Random random = new Random();
+    
+    final Timer gameLoop;
+    final char[] directions = {'U', 'D', 'L', 'R'};
+    final Random random = new Random();
+
     int score = 0;
     int lives = 3;
     boolean paused = true;
