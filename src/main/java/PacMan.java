@@ -322,6 +322,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
      * Moves the Pacman character and the ghosts.
      */
     public void move() {
+        if (gameOver || paused)
+            return;
+
         pacman.x += pacman.velocityX;
         pacman.y += pacman.velocityY;
 
