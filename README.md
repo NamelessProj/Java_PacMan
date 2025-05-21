@@ -33,7 +33,13 @@ This project is a simple reimplementation of the classic **Pac-Man** game in Jav
 ## Installation and Running
 
 1. Clone this repository
-2. Navigate to the project directory
+    ```bash
+    git clone https://github.com/NamelessProj/Java_PacMan.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Java_PacMan
+   ```
 3. Run the following command to build the project:
    ```bash
    jar -cvf PacMan.jar src/main/java/com/example/pacman/*.java
@@ -41,6 +47,8 @@ This project is a simple reimplementation of the classic **Pac-Man** game in Jav
 4. Run the game using the following command:
    ```bash
     javaw.exe -jar PacMan.jar
+   # or
+    java -jar PacMan.jar
     ```
 
 ## Resources
