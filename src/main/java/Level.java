@@ -1,12 +1,13 @@
 public class Level {
     //X = wall, O = skip, P = pac man, ' ' = food
     //Ghosts: b = blue, o = orange, p = pink, r = red
+    // F = power food
 
     public static final String[] LEVEL_1 = {
             "XXXXXXXXXXXXXXXXXXX",
             "X        X        X",
             "X XX XXX X XXX XX X",
-            "X                 X",
+            "X        F        X",
             "X XX X XXXXX X XX X",
             "X    X       X    X",
             "XXXX XXXX XXXX XXXX",
@@ -30,7 +31,7 @@ public class Level {
             "XXXXXXXXXOXXXXXXXXX",
             "X                 X",
             "X XX XXX X XXX XX X",
-            "X                 X",
+            "X        F        X",
             "X XX X XXXXX X XX X",
             "X    X       X    X",
             "XXXX XXXX XXXX XXXX",
@@ -56,7 +57,7 @@ public class Level {
             "X XX XXX X XXX XX X",
             "X                 X",
             "X XXXX XX  X XXXX X",
-            "X      X   X      X",
+            "X      X F X      X",
             "XXXX XXX  XXXX XXXX",
             "OOOX X       X XOOO",
             "XXXX X XXrXX X XXXX",
