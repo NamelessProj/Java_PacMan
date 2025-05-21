@@ -125,10 +125,6 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     private final Image PACMAN_LEFT_IMAGE;
     private final Image PACMAN_RIGHT_IMAGE;
 
-    private final int GHOST_FRAME_RATE = 50; // Ghosts move every 50 frames
-
-    private final int MAX_CHERRIES = 5; // Maximum number of cherries on the board
-
     int level = 1;
 
     HashSet<Block> walls;
@@ -248,6 +244,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                     }
                     case 'P' -> pacman = new Block(PACMAN_RIGHT_IMAGE, x, y, TILE_SIZE, TILE_SIZE); // Pacman
                     case ' ' -> { // Food and Cherry
+                        // Maximum number of cherries on the board
+                        int MAX_CHERRIES = 5;
                         if (cherries.size() <= MAX_CHERRIES && random.nextInt(100) == 0) {
                             Block cherry = new Block(CHERRY_IMAGE, x, y, TILE_SIZE, TILE_SIZE);
                             cherries.add(cherry);
@@ -364,6 +362,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             ghost.y += ghost.velocityY;
 
             // Make the ghost move in a random direction every x frames
+            // Ghosts move every 50 frames
+            int GHOST_FRAME_RATE = 50;
             if (frameCount == GHOST_FRAME_RATE) {
                 frameCount = 0;
                 char newDirection = directions[random.nextInt(directions.length)];
