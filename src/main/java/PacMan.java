@@ -119,6 +119,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     private final Image RED_GHOST_IMAGE;
 
     private final Image CHERRY_IMAGE;
+    private final Image POWER_FOOD_IMAGE;
 
     private final Image PACMAN_UP_IMAGE;
     private final Image PACMAN_DOWN_IMAGE;
@@ -132,6 +133,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     HashSet<Block> ghosts;
     HashSet<Block> cherries;
     Block pacman;
+    Block powerFood;
 
     int frameCount = 0;
     
@@ -176,6 +178,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         PACMAN_RIGHT_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("images/pacmanRight.png"))).getImage();
 
         CHERRY_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("images/cherry.png"))).getImage();
+        POWER_FOOD_IMAGE = new ImageIcon(Objects.requireNonNull(getClass().getResource("images/powerFood.png"))).getImage();
 
         // Load the map
         loadMap();
@@ -243,6 +246,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                         ghosts.add(ghost);
                     }
                     case 'P' -> pacman = new Block(PACMAN_RIGHT_IMAGE, x, y, TILE_SIZE, TILE_SIZE); // Pacman
+                    case 'F' -> powerFood = new Block(POWER_FOOD_IMAGE, x, y, TILE_SIZE, TILE_SIZE); // Power food
                     case ' ' -> { // Food and Cherry
                         // Maximum number of cherries on the board
                         int MAX_CHERRIES = 5;
@@ -297,6 +301,11 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             for (Block cherry : cherries) {
                 g.drawImage(cherry.image, cherry.x, cherry.y, cherry.width, cherry.height, null);
             }
+        }
+
+        // Draw power food
+        if (powerFood != null) {
+            g.drawImage(powerFood.image, powerFood.x, powerFood.y, powerFood.width, powerFood.height, null);
         }
 
         // Draw score
@@ -383,6 +392,12 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
             // Check if the ghost gets out of the screen and teleports to the other side
             checkIfOutOfBound(ghost);
+        }
+
+        // Check for collision between Pacman and power food
+        if (powerFood != null && collision(pacman, powerFood)) {
+            score += 100;
+            powerFood = null; // Remove power food from the board
         }
 
         // Check for collision between Pacman and cherries
