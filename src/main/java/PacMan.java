@@ -19,6 +19,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         final int height;
         Image image;
 
+        boolean isScared = false;
+
         final int startX;
         final int startY;
 
@@ -287,7 +289,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
         // Draw each ghost
         for (Block ghost : ghosts) {
-            Image ghostImage = ghostsScared ? SCARED_GHOST_IMAGE : ghost.image;
+            Image ghostImage = (ghostsScared && ghost.isScared) ? SCARED_GHOST_IMAGE : ghost.image;
             g.drawImage(ghostImage, ghost.x, ghost.y, ghost.width, ghost.height, null);
         }
 
@@ -367,8 +369,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         for (Block ghost : ghosts) {
             // Check for collision between ghost and Pacman
             if (collision(ghost, pacman)) {
-                if (ghostsScared) {
+                if (ghostsScared && ghost.isScared) {
                     score += 200;
+                    ghost.isScared = false;
                     ghost.reset();
                     char newDirection = directions[random.nextInt(directions.length)];
                     ghost.updateDirection(newDirection);
@@ -410,6 +413,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         // Check for collision between Pacman and power food
         if (powerFood != null && collision(pacman, powerFood)) {
             score += 100;
+            for (Block ghost : ghosts) {
+                ghost.isScared = true;
+            }
             ghostsScared = true;
             powerFood = null; // Remove power food from the board
         }
