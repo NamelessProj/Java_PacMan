@@ -342,16 +342,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         }
 
         // Check if Pacman get out of the screen and teleport to the other side
-        if (pacman.x <= -pacman.width) {
-            pacman.x = BOARD_WIDTH;
-        } else if (pacman.x >= BOARD_WIDTH) {
-            pacman.x = -pacman.width;
-        }
-        if (pacman.y <= -pacman.height) {
-            pacman.y = BOARD_HEIGHT;
-        } else if (pacman.y >= BOARD_HEIGHT) {
-            pacman.y = -pacman.height;
-        }
+        checkIfOutOfBound(pacman);
 
         for (Block ghost : ghosts) {
             // Check for collision between ghost and Pacman
@@ -384,16 +375,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             }
 
             // Check if the ghost gets out of the screen and teleports to the other side
-            if (ghost.x <= -ghost.width) {
-                ghost.x = BOARD_WIDTH;
-            } else if (ghost.x >= BOARD_WIDTH) {
-                ghost.x = -ghost.width;
-            }
-            if (ghost.y <= -ghost.height) {
-                ghost.y = BOARD_HEIGHT;
-            } else if (ghost.y >= BOARD_HEIGHT) {
-                ghost.y = -ghost.height;
-            }
+            checkIfOutOfBound(ghost);
         }
 
         // Check for collision between Pacman and cherry
@@ -419,6 +401,23 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             resetPosition();
             frameCount = 0;
             score += 100;
+        }
+    }
+
+    /**
+     * Checks if a block is out of bounds and teleports it to the other side of the screen.
+     * @param block The block to check
+     */
+    private void checkIfOutOfBound(Block block) {
+        if (block.x <= -block.width) {
+            block.x = BOARD_WIDTH;
+        } else if (block.x >= BOARD_WIDTH) {
+            block.x = -block.width;
+        }
+        if (block.y <= -block.height) {
+            block.y = BOARD_HEIGHT;
+        } else if (block.y >= BOARD_HEIGHT) {
+            block.y = -block.height;
         }
     }
 
