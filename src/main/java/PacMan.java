@@ -312,9 +312,8 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         }
 
         // Draw power food
-        if (powerFood != null) {
+        if (powerFood != null)
             g.drawImage(powerFood.image, powerFood.x, powerFood.y, powerFood.width, powerFood.height, null);
-        }
 
         // Draw score
         int scorePosX = TILE_SIZE / 2;
