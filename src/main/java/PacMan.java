@@ -144,6 +144,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
     final char[] directions = {'U', 'D', 'L', 'R'};
     final Random random = new Random();
 
+    int highScore = 0;
     int score = 0;
     int lives = 3;
     int ghostScareTime = 0;
@@ -315,6 +316,10 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         if (powerFood != null)
             g.drawImage(powerFood.image, powerFood.x, powerFood.y, powerFood.width, powerFood.height, null);
 
+
+        // ==== Draw HUD ====
+
+
         // Draw score
         int scorePosX = TILE_SIZE / 2;
         int scorePosY = (int) (TILE_SIZE / 1.5);
@@ -323,6 +328,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
         // Draw level
         g.drawString("Level: " + level, BOARD_WIDTH - 150, scorePosY);
+
+        // Draw high score
+        g.drawString("High Score: " + highScore, BOARD_WIDTH - 380, scorePosY);
 
         if (gameOver) { // Game Over message
             g.setColor(new Color(0, 0, 0, 150));
@@ -411,7 +419,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
         // Check for collision between Pacman and power food
         if (powerFood != null && collision(pacman, powerFood)) {
-            score += 100;
+            addScore(100);
             for (Block ghost : ghosts) {
                 ghost.isScared = true;
             }
@@ -424,7 +432,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         for (Block cherry : cherries) {
             if (collision(pacman, cherry)) {
                 cherryEaten = cherry;
-                score += 50;
+                addScore(50);
                 break;
             }
         }
@@ -435,7 +443,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         for (Block food : foods) {
             if (collision(pacman, food)) {
                 foodEaten = food;
-                score += 10;
+                addScore(10);
                 break;
             }
         }
@@ -449,6 +457,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             frameCount = 0;
             score += 100;
         }
+    }
+
+    /**
+     * Adds score to the current score and updates the high score if necessary.
+     * @param score The score to be added, default is 20
+     */
+    private void addScore(int score) {
+        this.score += score;
+        if (this.score >= highScore)
+            highScore = this.score;
     }
 
     /**
