@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class PacMan extends JPanel implements ActionListener, KeyListener {
+
     /**
      * Block class represents a block in the game, such as walls, ghosts, and Pacman.
      */
