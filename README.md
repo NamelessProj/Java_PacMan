@@ -3,6 +3,8 @@
 </p>
 
 <p align="center">
+<img src="https://img.shields.io/github/license/NamelessProj/Java_PacMan" alt="licence"/>
+<img src="https://img.shields.io/github/repo-size/NamelessProj/Java_PacMan" alt="repo size"/>
 </p>
 
 # Pac-Man Java
