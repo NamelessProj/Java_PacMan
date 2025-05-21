@@ -127,13 +127,15 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
 
     private final int GHOST_FRAME_RATE = 50; // Ghosts move every 50 frames
 
+    private final int MAX_CHERRIES = 5; // Maximum number of cherries on the board
+
     int level = 1;
 
     HashSet<Block> walls;
     HashSet<Block> foods;
     HashSet<Block> ghosts;
+    HashSet<Block> cherries;
     Block pacman;
-    Block cherry;
 
     int frameCount = 0;
     
@@ -200,6 +202,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         walls = new HashSet<>();
         foods = new HashSet<>();
         ghosts = new HashSet<>();
+        cherries = new HashSet<>();
 
         String[] tileMap = Level.getLevel(level);
 
@@ -245,8 +248,9 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                     }
                     case 'P' -> pacman = new Block(PACMAN_RIGHT_IMAGE, x, y, TILE_SIZE, TILE_SIZE); // Pacman
                     case ' ' -> { // Food and Cherry
-                        if (cherry == null && random.nextInt(100) == 0) {
-                            cherry = new Block(CHERRY_IMAGE, x, y, TILE_SIZE, TILE_SIZE);
+                        if (cherries.size() <= MAX_CHERRIES && random.nextInt(100) == 0) {
+                            Block cherry = new Block(CHERRY_IMAGE, x, y, TILE_SIZE, TILE_SIZE);
+                            cherries.add(cherry);
                         } else {
                             Block food = new Block(null, x + 14, y + 14, 4, 4);
                             foods.add(food);
@@ -290,9 +294,12 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             g.fillRect(food.x, food.y, food.width, food.height);
         }
 
-        // Draw cherry
-        if (cherry != null)
-            g.drawImage(cherry.image, cherry.x, cherry.y, cherry.width, cherry.height, null);
+        // Draw cherries
+        if (!cherries.isEmpty()) {
+            for (Block cherry : cherries) {
+                g.drawImage(cherry.image, cherry.x, cherry.y, cherry.width, cherry.height, null);
+            }
+        }
 
         // Draw score
         int scorePosX = TILE_SIZE / 2;
@@ -378,11 +385,16 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             checkIfOutOfBound(ghost);
         }
 
-        // Check for collision between Pacman and cherry
-        if (cherry != null && collision(pacman, cherry)) {
-            score += 50;
-            cherry = null; // Remove the cherry after eating it
+        // Check for collision between Pacman and cherries
+        Block cherryEaten = null;
+        for (Block cherry : cherries) {
+            if (collision(pacman, cherry)) {
+                cherryEaten = cherry;
+                score += 50;
+                break;
+            }
         }
+        cherries.remove(cherryEaten);
 
         // Check for collision between Pacman and food
         Block foodEaten = null;
@@ -390,6 +402,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             if (collision(pacman, food)) {
                 foodEaten = food;
                 score += 10;
+                break;
             }
         }
         foods.remove(foodEaten);
