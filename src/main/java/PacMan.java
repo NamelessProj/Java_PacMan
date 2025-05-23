@@ -378,7 +378,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             // Check for collision between ghost and Pacman
             if (collision(ghost, pacman)) {
                 if (ghostsScared && ghost.isScared) {
-                    score += 200;
+                    addScore(200);
                     ghost.isScared = false;
                     ghost.reset();
                     char newDirection = directions[random.nextInt(directions.length)];
@@ -456,7 +456,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
             loadMap();
             resetPosition();
             frameCount = 0;
-            score += 100;
+            addScore(100);
         }
     }
 
