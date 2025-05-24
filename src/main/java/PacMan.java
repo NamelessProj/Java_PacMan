@@ -385,7 +385,7 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
                     ghost.updateDirection(newDirection);
                 } else {
                     lives--;
-                    if (lives == 0)
+                    if (lives <= 0)
                         gameOver = true;
                     resetPosition();
                 }
